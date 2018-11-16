@@ -126,18 +126,30 @@ public class Matrix {
 	}
 	
 	//--------------------------------------------------------------//
-		public static boolean[][] logicalMultiplication(boolean[][] A, boolean[][] B) {
+	public static boolean[][] logicalMultiplication(boolean[][] A, boolean[][] B) {
 			
-			boolean C[][] = new boolean[A.length][A.length];		
+		boolean C[][] = new boolean[A.length][A.length];		
 			
-			for (int i = 0; i < A.length; i++) 
-				for (int j = 0; j < A.length; j++) {
-					C[i][j] = A[i][j] && B[i][j];
-				}
+		for (int i = 0; i < A.length; i++) 
+			for (int j = 0; j < A.length; j++) {
+				C[i][j] = A[i][j] && B[i][j];
+			}
 			
-			return C;		
+		return C;		
 			
-		}
+	}
 	
+	//--------------------------------------------------------------//
+	public static boolean[][] getBlockMatrix(boolean A[][]) {
+		
+		boolean B[][] = new boolean[A.length][A.length];
+		
+		
+		
+		
+		
+		return B;
+		
+	}
 	
 }
