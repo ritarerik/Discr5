@@ -54,9 +54,17 @@ public class Matrix {
 	}
 	
 	//--------------------------------------------------------------//
-	public static void printComponents(int A[][]) {
-		for (int i = 0; i < A.length; i ++)  
-			System.out.println("   " + (i + 1) + ") {x(" + A[i][0] + "), x(" + A[i][1] + ")}");			
+	public static boolean[][] intersection(boolean[][] A, boolean[][] B) {
+		
+		boolean C[][] = new boolean[A.length][A.length];		
+		
+		for (int i = 0; i < A.length; i++) 
+			for (int j = 0; j < A.length; j++) {
+				C[i][j] = A[i][j] || B[i][j];
+			}
+		
+		return C;		
+		
 	}
 	
 	

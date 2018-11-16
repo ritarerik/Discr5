@@ -1,3 +1,5 @@
+// ìàòðè÷íûé ìåòîä ðàçáèåíèÿ
+
 import java.util.Scanner;
 
 public class MainClass {
@@ -53,31 +55,32 @@ public class MainClass {
 					case 2 : {
 						
 						System.out.println();
-						System.out.println(">> ÌÀÒÐÈÖÀ ÑÌÅÆÍÎÑÒÈ >\n");
-	
+						System.out.println(">> ÌÀÒÐÈÖÀ A >\n");	
 						boolean A[][] = {{false, true, true,  false,  false, false},
 								 		 {false, true,  false, false, true,  false},
 										 {false, false, false, false, false, false},
 										 {false, false, true,  false, false, false},
 										 {true,  false, false, true,  false, false},
-										 {true,  false, false, false, true,  true}};					
-						
+										 {true,  false, false, false, true,  true}};
 						Matrix.printBOOLEAN(A, 'x', 'x'); 
 				        System.out.println("\n");
 				        
-				        System.out.println(">> ÏÐßÌÎÅ ÒÐÀÍÇÈÒÈÂÍÎÅ ÇÀÌÛÊÀÍÈÅ ÄËß 7-ÎÉ ÂÅÐØÈÍÛ (x(6))>\n");
-//				        int B[] = TransitiveClosure.getDirect(A, 1); // ÏÅÐÅÄÅËÀÒÜ ÍÀ 6!!!!!!!!!!!!!!!
-//				        Matrix.printINT_VECTOR(B, 'x');
+				        System.out.println(">> ÌÀÒÐÈÖÀ B >\n");
+				        boolean B[][] = {{false, false, false, true,  false, false},
+								 		 {true,  true,  false, false, false, false},
+										 {false, true,  true,  false, false, false},
+										 {false, false, true,  false, false, true},
+										 {false, false, false, true,  false, false},
+										 {false, false, false, true,  true,  false}};
+						Matrix.printBOOLEAN(B, 'x', 'x'); 
 				        System.out.println("\n");
 				        
-				        System.out.println(">> ÎÁÐÀÒÍÎÅ ÒÐÀÍÇÈÒÈÂÍÎÅ ÇÀÌÛÊÀÍÈÅ ÄËß 7-ÎÉ ÂÅÐØÈÍÛ (x(6))>\n");
-//				        int C[] = TransitiveClosure.getReverse(A, 2); // ÏÅÐÅÄÅËÀÒÜ ÍÀ 6!!!!!!!!!!!!!!!
-//				        Matrix.printINT_VECTOR(C, 'x');
+				        System.out.println(">> ÏÅÐÅÑÅ×ÅÍÈÅ >\n");
+				        boolean C[][] = Matrix.intersection(A, B);
+				        Matrix.printBOOLEAN(C, 'x', 'x'); 
 				        System.out.println("\n");
 				        
-				        System.out.println(">> ÏÎÑÈÊ ÑËÀÁÛÕ ÊÎÌÏÎÍÅÍÒ ÃÐÀÔÀ >\n");
-						
-//				        TransitiveClosure.printComponents(A);
+				        
 				        break;
 					}
 				}
