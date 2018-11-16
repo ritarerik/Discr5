@@ -76,18 +76,23 @@ public class MainClass {
 				        System.out.println("\n");
 				        
 				        System.out.println(">> ÏÅÐÅÑÅ×ÅÍÈÅ >\n");
-				        boolean C[][] = Matrix.intersection(A, B);
+				        boolean AB[][] = Matrix.intersection(A, B);
+				        Matrix.printBOOLEAN(AB, 'x', 'x'); 
+				        System.out.println("\n");
+				        
+				        System.out.println(">> ÌÀÒÐÈÖÀ ÄÎÑÒÈÆÈÌÎÑÒÈ (R) >\n");
+				        boolean R[][] = Matrix.getDirectTransitiveClosure(AB);
+				        Matrix.printBOOLEAN(R, 'x', 'x'); 
+				        System.out.println("\n");
+				        
+				        System.out.println(">> ÌÀÒÐÈÖÀ ÊÎÍÒÐÄÎÑÒÈÆÈÌÎÑÒÈ (Q) >\n");
+				        boolean Q[][] = Matrix.transpose(R);
+				        Matrix.printBOOLEAN(Q, 'x', 'x'); 
+				        System.out.println("\n");
+				        
+				        System.out.println(">> ËÎÃÈ×ÅÑÊÎÅ ÏÅÐÅÌÍÎÆÅÍÈÅ ÌÀÒÐÈÖ (C) >\n");
+				        boolean C[][] = Matrix.logicalMultiplication(R, Q);
 				        Matrix.printBOOLEAN(C, 'x', 'x'); 
-				        System.out.println("\n");
-				        
-				        System.out.println(">> ÌÀÒÐÈÖÀ ÄÎÑÒÈÆÈÌÎÑÒÈ >\n");
-				        boolean D[][] = Matrix.getDirectTransitiveClosure(C);
-				        Matrix.printBOOLEAN(D, 'x', 'x'); 
-				        System.out.println("\n");
-				        
-				        System.out.println(">> ÌÀÒÐÈÖÀ ÊÎÍÒÐÄÎÑÒÈÆÈÌÎÑÒÈ >\n");
-				        boolean E[][] = Matrix.transpose(D);
-				        Matrix.printBOOLEAN(E, 'x', 'x'); 
 				        System.out.println("\n");
 				        
 				        
