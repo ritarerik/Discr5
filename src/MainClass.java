@@ -86,7 +86,7 @@ public class MainClass {
 				        System.out.println("\n");
 				        
 				        System.out.println(">> ÌÀÒÐÈÖÀ ÊÎÍÒÐÄÎÑÒÈÆÈÌÎÑÒÈ >\n");
-				        boolean E[][] = Matrix.getReverseTransitiveClosure(C);
+				        boolean E[][] = Matrix.transpose(D);
 				        Matrix.printBOOLEAN(E, 'x', 'x'); 
 				        System.out.println("\n");
 				        
