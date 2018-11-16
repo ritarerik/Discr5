@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.Random;
 
 public class Matrix {
@@ -66,6 +67,107 @@ public class Matrix {
 		return C;		
 		
 	}
+	
+	//--------------------------------------------------------------//
+	public static boolean[][] reachabilityMatrix(boolean A[][]) {
+		
+		boolean B[][] = new boolean[A.length][A[0].length];
+		
+		
+		
+		
+		
+		return B;
+		
+	}
+	
+	//--------------------------------------------------------------//
+	// прямое транзитивное замыкание 
+	public static boolean[][] getDirectTransitiveClosure(boolean G[][]) {
+			
+		boolean C[][] = new boolean[G.length][G[0].length];
+		
+		for (int vertex = 0; vertex < G.length; vertex ++) {
+			
+			int B[] = new int[G[0].length];
+			for (int i = 0; i < B.length; i++) B[i] = -1;
+			B[vertex] = 0;
+			
+			boolean D[] = new boolean[G[0].length];
+			for (int i = 0; i < D.length; i++) D[i] = false;	
+					
+			ArrayDeque<Integer> Q = new ArrayDeque<>(); // очередь вершин
+			Q.addLast(vertex);							// первая вершина задаётся как параметр функции (по заданию 7-ая (x(6)))
+				
+			ArrayDeque<Integer> L = new ArrayDeque<>(); // очередь расстояний
+			L.addLast(B[vertex]);						// первое расстояние = 0
+				
+			while (!Q.isEmpty()) {						// обход в ширину 	 		
+					
+				int i = Q.removeFirst();
+					
+				int length = L.removeFirst() + 1;						
+				for (int j = 0; j < G[0].length; j++)						
+					if (G[i][j] && B[j] != 0 && B[j] == -1) {					
+						Q.addLast(j);
+						L.addLast(length);
+						if (length > 0)
+						B[j] = length;
+						D[j] = true;
+					} 								
+			}
+			
+			C[vertex] = D;			
+			
+		}
+		
+		return C;
+			
+	}	
+	
+	//--------------------------------------------------------------//
+	// прямое транзитивное замыкание 
+	public static boolean[][] getReverseTransitiveClosure(boolean G[][]) {
+				
+		boolean C[][] = new boolean[G.length][G[0].length];
+			
+		for (int vertex = 0; vertex < G.length; vertex ++) {
+				
+			int B[] = new int[G[0].length];
+			for (int i = 0; i < B.length; i++) B[i] = -1;
+			B[vertex] = 0;
+				
+			boolean D[] = new boolean[G[0].length];
+			for (int i = 0; i < D.length; i++) D[i] = false;	
+						
+			ArrayDeque<Integer> Q = new ArrayDeque<>(); // очередь вершин
+			Q.addLast(vertex);							// первая вершина задаётся как параметр функции (по заданию 7-ая (x(6)))
+					
+			ArrayDeque<Integer> L = new ArrayDeque<>(); // очередь расстояний
+			L.addLast(B[vertex]);						// первое расстояние = 0
+					
+			while (!Q.isEmpty()) {						// обход в ширину 	 		
+				
+				int j = Q.removeFirst();
+					
+				int length = L.removeFirst() + 1;						
+				for (int i = 0; i < G.length; i++)						
+					if (G[i][j] && B[i] != 0 && B[i] == -1) { 
+						Q.addLast(i);
+						L.addLast(length);
+						B[i] = length;
+						D[i] = true;
+					} 
+								
+			}	
+				
+			C[vertex] = D;		
+				
+		}
+			
+		return C;
+				
+	}	
 	
 	
 	

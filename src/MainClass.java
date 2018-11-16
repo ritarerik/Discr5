@@ -56,28 +56,38 @@ public class MainClass {
 						
 						System.out.println();
 						System.out.println(">> ÌÀÒÐÈÖÀ A >\n");	
-						boolean A[][] = {{false, true, true,  false,  false, false},
-								 		 {false, true,  false, false, true,  false},
+						boolean A[][] = {{false, true,  false, false, false, false},
+								 		 {false, false, false, false, true,  false},
 										 {false, false, false, false, false, false},
-										 {false, false, true,  false, false, false},
+										 {false, false, false, false, false, false},
 										 {true,  false, false, true,  false, false},
-										 {true,  false, false, false, true,  true}};
+										 {false, false, false, false, true,  true}};
 						Matrix.printBOOLEAN(A, 'x', 'x'); 
 				        System.out.println("\n");
 				        
 				        System.out.println(">> ÌÀÒÐÈÖÀ B >\n");
 				        boolean B[][] = {{false, false, false, true,  false, false},
 								 		 {true,  true,  false, false, false, false},
-										 {false, true,  true,  false, false, false},
-										 {false, false, true,  false, false, true},
+										 {false, false, true,  false, false, false},
+										 {false, false, false, false, false, false},
 										 {false, false, false, true,  false, false},
-										 {false, false, false, true,  true,  false}};
+										 {false, false, false, true,  false, false}};
 						Matrix.printBOOLEAN(B, 'x', 'x'); 
 				        System.out.println("\n");
 				        
 				        System.out.println(">> ÏÅÐÅÑÅ×ÅÍÈÅ >\n");
 				        boolean C[][] = Matrix.intersection(A, B);
 				        Matrix.printBOOLEAN(C, 'x', 'x'); 
+				        System.out.println("\n");
+				        
+				        System.out.println(">> ÌÀÒÐÈÖÀ ÄÎÑÒÈÆÈÌÎÑÒÈ >\n");
+				        boolean D[][] = Matrix.getDirectTransitiveClosure(C);
+				        Matrix.printBOOLEAN(D, 'x', 'x'); 
+				        System.out.println("\n");
+				        
+				        System.out.println(">> ÌÀÒÐÈÖÀ ÊÎÍÒÐÄÎÑÒÈÆÈÌÎÑÒÈ >\n");
+				        boolean E[][] = Matrix.getReverseTransitiveClosure(C);
+				        Matrix.printBOOLEAN(E, 'x', 'x'); 
 				        System.out.println("\n");
 				        
 				        
