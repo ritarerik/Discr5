@@ -143,11 +143,9 @@ public class Matrix {
 	}
 	
 	//--------------------------------------------------------------//
-	public static boolean[][] getBlockMatrix(boolean A[][]) {
-		
-		// записываю исходный массив в безразмерную структуру
-		ArrayList<boolean[]> vectors = new ArrayList<>();		
-		for (boolean a[] : A) vectors.add(a);
+	public static boolean[][] getBlockMatrix(boolean A[][], int index) {
+
+		boolean vectors[][] = A;
 		
 		// при сортировке строк буду записывать их индексы в две части,
 		// это при допущении, что исходная матрица симметрична относительно главной  
@@ -156,27 +154,65 @@ public class Matrix {
 		ArrayList<Integer> left = new ArrayList<>();
 		ArrayList<Integer> right = new ArrayList<>();
 		
-		for (int i = 0; i < vectors.size(); i++) {
+		ArrayList<Integer> checked = new ArrayList<>();
+		
+		for (int i = 0; i < A.length; i++) {
 			
-			boolean vector[] = vectors.get(i);
-			
-			for (int j = 0; j < vector.length; j++) {				
-				if (A[i][j]) left.add(i);
-				else right.add(i);
+			for (int j = 0; j < A[0].length; j++) {				
+				if (A[i][j]) left.add(j);
+				else right.add(j);
 			}
 			
-			vectors.clear();
-			
+			vectors = getNewVectors(left, right, vectors);
+			left.clear();
+			right.clear();
 			
 		}
 		
 		
-		for (int i = 0; i < A.length; i++) {			
-			boolean vector[] = vectors.get(i);			
-			for (int j = 0; j < A[0].length; j++) A[i][j] = vector[j];
+//		for (int i = 0; i < A.length; i++) {			
+//			boolean vector[] = vectors.get(i);			
+//			for (int j = 0; j < A[0].length; j++) A[i][j] = vector[j];
+//		}
+		
+		return vectors;
+		
+	}
+	
+	private static boolean[][] getNewVectors(ArrayList<Integer> left, ArrayList<Integer> right, boolean vectors[][]) {
+		
+		boolean vectorsNew[][] = new boolean[vectors.length][vectors[0].length];
+		boolean vectorsNewTMP[][] = new boolean[vectors.length][vectors[0].length];
+		
+		int index = 0;
+		for (int i = 0; i < left.size(); i++) {
+			
+			boolean v[] = vectors[left.get(i)];			
+			vectorsNewTMP[index] = v;
+			
+			for (int j = 0; j < vectors[0].length; j++) 
+				vectorsNewTMP[j][index] = v[j];
+			
+			
+			index++;
 		}
 		
-		return A;
+		for (int i = 0; i < right.size(); i++) {
+			
+			boolean v[] = vectors[right.get(i)];			
+			vectorsNewTMP[index] = v;		
+			
+			for (int j = 0; j < vectors[0].length; j++) 
+				vectorsNewTMP[j][index] = v[j];
+			
+			index++; 
+		}
+		
+		
+		
+		index = 0;
+		
+		return vectorsNew;
 		
 	}
 		

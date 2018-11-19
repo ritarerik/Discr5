@@ -95,8 +95,8 @@ public class MainClass {
 				        Matrix.printBOOLEAN(C, 'x', 'x'); 
 				        System.out.println("\n");
 				        
-				        System.out.println(">> ÁËÎ×ÍÎ-ÄÈÀÃÎÍÀËÜÍÀß ÌÀÒÐÈÖÀ >\n");
-				        boolean blockC[][] = Matrix.getBlockMatrix(C);
+				        System.out.println(">> ÐÀÇÁÈÅÍÈÅ ÌÀÒÐÈ×ÍÛÉ ÌÅÒÎÄÎÌ ÍÀ×ÈÍÀß Ñ 7-ÎÉ ÂÅÐØÈÍÛ (õ(6); ÁËÎ×ÍÎ-ÄÈÀÃÎÍÀËÜÍÀß ÌÀÒÐÈÖÀ) >\n");
+				        boolean blockC[][] = Matrix.getBlockMatrix(C, 6);
 				        Matrix.printBOOLEAN(blockC, 'x', 'x'); 
 				        System.out.println("\n");
 				        
