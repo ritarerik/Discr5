@@ -57,8 +57,8 @@ public class MainClass {
 						System.out.println();
 						System.out.println(">> ÌÀÒÐÈÖÀ A >\n");	
 						boolean A[][] = {{false, true,  false, false, false, false},
-								 		 {false, false, false, false, true,  false},
-										 {false, false, false, false, false, false},
+								 		 {false, true,  false, false, true,  false},
+										 {false, false, true,  false, false, false},
 										 {false, false, false, false, false, false},
 										 {true,  false, false, true,  false, false},
 										 {false, false, false, false, true,  true}};
@@ -69,8 +69,8 @@ public class MainClass {
 				        boolean B[][] = {{false, false, false, true,  false, false},
 								 		 {true,  true,  false, false, false, false},
 										 {false, false, true,  false, false, false},
-										 {false, false, false, false, false, false},
 										 {false, false, false, true,  false, false},
+										 {false, false, false, true,  true,  false},
 										 {false, false, false, true,  false, false}};
 						Matrix.printBOOLEAN(B, 'x', 'x'); 
 				        System.out.println("\n");
@@ -90,7 +90,7 @@ public class MainClass {
 				        Matrix.printBOOLEAN(Q, 'x', 'x'); 
 				        System.out.println("\n");
 				        
-				        System.out.println(">> ËÎÃÈ×ÅÑÊÎÅ ÏÅÐÅÌÍÎÆÅÍÈÅ ÌÀÒÐÈÖ (C) >\n");
+				        System.out.println(">> ËÎÃÈ×ÅÑÊÎÅ ÏÅÐÅÌÍÎÆÅÍÈÅ ÌÀÒÐÈÖ (R & Q = C) >\n");
 				        boolean C[][] = Matrix.logicalMultiplication(R, Q);
 				        Matrix.printBOOLEAN(C, 'x', 'x'); 
 				        System.out.println("\n");

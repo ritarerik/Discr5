@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Matrix {
@@ -78,10 +79,11 @@ public class Matrix {
 			
 			int B[] = new int[G[0].length];
 			for (int i = 0; i < B.length; i++) B[i] = -1;
-			B[vertex] = 0;
+			B[vertex] = 1;
 			
 			boolean D[] = new boolean[G[0].length];
-			for (int i = 0; i < D.length; i++) D[i] = false;	
+			for (int i = 0; i < D.length; i++) D[i] = false;
+			D[vertex] = true;
 					
 			ArrayDeque<Integer> Q = new ArrayDeque<>(); // очередь вершин
 			Q.addLast(vertex);							// первая вершина задаётся как параметр функции (по заданию 7-ая (x(6)))
@@ -98,9 +100,10 @@ public class Matrix {
 					if (G[i][j] && B[j] != 0 && B[j] == -1) {					
 						Q.addLast(j);
 						L.addLast(length);
-						if (length > 0)
-						B[j] = length;
-						D[j] = true;
+						if (length > 0) {
+							B[j] = length;
+							D[j] = true;
+						}
 					} 								
 			}
 			
@@ -142,8 +145,17 @@ public class Matrix {
 	//--------------------------------------------------------------//
 	public static boolean[][] getBlockMatrix(boolean A[][]) {
 		
-		boolean B[][] = new boolean[A.length][A.length];
+		ArrayList<boolean[]> B = new ArrayList<>();		
+		for (boolean a[] : A) B.add(a);
 		
+		ArrayList<boolean[]> vectorA = getBlock(B, 0);		
+		for (int i = 0; i < vectorA.size(); i++) A[i] = vectorA.get(i);
+		
+		return A;
+		
+	}
+	
+	private static ArrayList<boolean[]> getBlock(ArrayList<boolean[]> B, int index) {
 		
 		
 		
