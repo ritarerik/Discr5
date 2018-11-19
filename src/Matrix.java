@@ -145,23 +145,39 @@ public class Matrix {
 	//--------------------------------------------------------------//
 	public static boolean[][] getBlockMatrix(boolean A[][]) {
 		
-		ArrayList<boolean[]> B = new ArrayList<>();		
-		for (boolean a[] : A) B.add(a);
+		// записываю исходный массив в безразмерную структуру
+		ArrayList<boolean[]> vectors = new ArrayList<>();		
+		for (boolean a[] : A) vectors.add(a);
 		
-		ArrayList<boolean[]> vectorA = getBlock(B, 0);		
-		for (int i = 0; i < vectorA.size(); i++) A[i] = vectorA.get(i);
+		// при сортировке строк буду записывать их индексы в две части,
+		// это при допущении, что исходна€ матрица симметрична относительно главной  
+		// диагонали -> считаю, что то, что справделиво дл€ столбцов, справедливо 
+		// и дл€ строк -> столбцы переставл€ю также, как и строки
+		ArrayList<Integer> left = new ArrayList<>();
+		ArrayList<Integer> right = new ArrayList<>();
+		
+		for (int i = 0; i < vectors.size(); i++) {
+			
+			boolean vector[] = vectors.get(i);
+			
+			for (int j = 0; j < vector.length; j++) {				
+				if (A[i][j]) left.add(i);
+				else right.add(i);
+			}
+			
+			vectors.clear();
+			
+			
+		}
+		
+		
+		for (int i = 0; i < A.length; i++) {			
+			boolean vector[] = vectors.get(i);			
+			for (int j = 0; j < A[0].length; j++) A[i][j] = vector[j];
+		}
 		
 		return A;
 		
 	}
-	
-	private static ArrayList<boolean[]> getBlock(ArrayList<boolean[]> B, int index) {
 		
-		
-		
-		
-		return B;
-		
-	}
-	
 }
