@@ -155,6 +155,7 @@ public class Matrix {
 		ArrayList<Integer> right = new ArrayList<>();
 		
 		ArrayList<Integer> checked = new ArrayList<>();
+		ArrayList<Integer> indexes = new ArrayList<>();
 		
 		for (int i = 0; i < A.length; i++) {
 			
@@ -165,13 +166,19 @@ public class Matrix {
 				}
 				else right.add(j);
 			}
-			
+
 			vectors = getNewVectors(left, right, vectors);
+				
+			indexes.clear();
+			for (int l : left)  indexes.add(l);
+			for (int r : right) indexes.add(r);
+				
 			left.clear();
 			right.clear();
 			
 		}
 		
+		printBOOLEAN_blockMatrix(vectors, indexes);
 		return vectors;
 		
 	}
@@ -220,5 +227,30 @@ public class Matrix {
 		}					
 		return false;		
 	}
+	
+	public static void printBOOLEAN_blockMatrix(boolean A[][], ArrayList<Integer> indexes) {
 		
+		System.out.print("        |");
+		for (int i = 0; i < A[0].length; i++) {
+			System.out.print("x(" + indexes.get(i) + ") ");
+		}
+		System.out.println();
+		
+		System.out.print("        |————");
+		for (int i = 0; i < A[0].length - 1; i++) {
+			System.out.print("—————");
+		}
+		System.out.println();
+
+		for (int i = 0; i < A.length; i++) {
+			System.out.print("   x(" + indexes.get(i) + ") |");
+			for (int j = 0; j < A[0].length; j++) {				
+				if (A[i][j] == true) System.out.print("  " + 1 + " ");
+					else System.out.print("  " + 0 + " ");
+				if (j < A[0].length - 1) System.out.print(" ");	        				
+			}			
+			if (i < A.length - 1) System.out.print("\n");	        			
+		}		
+	}
+	
 }
