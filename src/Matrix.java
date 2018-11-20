@@ -160,7 +160,7 @@ public class Matrix {
 		for (int i = 0; i < A.length; i++) {
 			
 			for (int j = 0; j < A[0].length; j++) {				
-				if (A[i][j] && !checked.contains(j) && !isThisTrueSingle(A[i])) {
+				if (A[i][j] && !checked.contains(j)) { // && !isThisTrueSingle(A[i])
 					left.add(j);
 					checked.add(j);
 				}
