@@ -154,8 +154,9 @@ public class Matrix {
 		ArrayList<Integer> left = new ArrayList<>();
 		ArrayList<Integer> right = new ArrayList<>();
 		
-		ArrayList<Integer> checked = new ArrayList<>();
-		ArrayList<Integer> indexes = new ArrayList<>();
+		ArrayList<Integer> checked = new ArrayList<>();		
+		int indexes[] = new int[A.length];
+		for (int i = 0; i < A.length; i++) indexes[i] = i; 
 		
 		for (int i = 0; i < A.length; i++) {
 			
@@ -167,12 +168,8 @@ public class Matrix {
 				else right.add(j);
 			}
 
-			vectors = getNewVectors(left, right, vectors);
-				
-			indexes.clear();
-			for (int l : left)  indexes.add(l);
-			for (int r : right) indexes.add(r);
-				
+			vectors = getNewVectors(left, right, vectors, indexes);
+	
 			left.clear();
 			right.clear();
 			
@@ -183,19 +180,23 @@ public class Matrix {
 		
 	}
 	
-	private static boolean[][] getNewVectors(ArrayList<Integer> left, ArrayList<Integer> right, boolean vectors[][]) {
+	private static boolean[][] getNewVectors(ArrayList<Integer> left, ArrayList<Integer> right, boolean vectors[][], int indexes[]) {
 		
 		boolean vectorsNew[][] = new boolean[vectors.length][vectors[0].length];
 		boolean vectorsNewTMP[][] = new boolean[vectors.length][vectors[0].length];
 		
+		int indexesNew[] = new int[indexes.length];
+		
 		int index = 0;
 		for (int i = 0; i < left.size(); i++) {		
 			vectorsNewTMP[index] = vectors[left.get(i)];
+			indexesNew[index] = indexes[left.get(i)];
 			index++;
 		}
 		
 		for (int i = 0; i < right.size(); i++) {			
-			vectorsNewTMP[index] = vectors[right.get(i)];			
+			vectorsNewTMP[index] = vectors[right.get(i)];
+			indexesNew[index] = indexes[right.get(i)];
 			index++; 
 		}
 		
@@ -228,11 +229,11 @@ public class Matrix {
 		return false;		
 	}
 	
-	public static void printBOOLEAN_blockMatrix(boolean A[][], ArrayList<Integer> indexes) {
+	public static void printBOOLEAN_blockMatrix(boolean A[][], int indexes[]) {
 		
 		System.out.print("        |");
 		for (int i = 0; i < A[0].length; i++) {
-			System.out.print("x(" + indexes.get(i) + ") ");
+			System.out.print("x(" + indexes[i] + ") ");
 		}
 		System.out.println();
 		
@@ -243,7 +244,7 @@ public class Matrix {
 		System.out.println();
 
 		for (int i = 0; i < A.length; i++) {
-			System.out.print("   x(" + indexes.get(i) + ") |");
+			System.out.print("   x(" + indexes[i] + ") |");
 			for (int j = 0; j < A[0].length; j++) {				
 				if (A[i][j] == true) System.out.print("  " + 1 + " ");
 					else System.out.print("  " + 0 + " ");
