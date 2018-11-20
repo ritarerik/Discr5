@@ -159,7 +159,10 @@ public class Matrix {
 		for (int i = 0; i < A.length; i++) {
 			
 			for (int j = 0; j < A[0].length; j++) {				
-				if (A[i][j]) left.add(j);
+				if (A[i][j] && !checked.contains(j) && !isThisTrueSingle(A[i])) {
+					left.add(j);
+					checked.add(j);
+				}
 				else right.add(j);
 			}
 			
@@ -168,12 +171,6 @@ public class Matrix {
 			right.clear();
 			
 		}
-		
-		
-//		for (int i = 0; i < A.length; i++) {			
-//			boolean vector[] = vectors.get(i);			
-//			for (int j = 0; j < A[0].length; j++) A[i][j] = vector[j];
-//		}
 		
 		return vectors;
 		
@@ -185,35 +182,43 @@ public class Matrix {
 		boolean vectorsNewTMP[][] = new boolean[vectors.length][vectors[0].length];
 		
 		int index = 0;
-		for (int i = 0; i < left.size(); i++) {
-			
-			boolean v[] = vectors[left.get(i)];			
-			vectorsNewTMP[index] = v;
-			
-			for (int j = 0; j < vectors[0].length; j++) 
-				vectorsNewTMP[j][index] = v[j];
-			
-			
+		for (int i = 0; i < left.size(); i++) {		
+			vectorsNewTMP[index] = vectors[left.get(i)];
 			index++;
 		}
 		
-		for (int i = 0; i < right.size(); i++) {
-			
-			boolean v[] = vectors[right.get(i)];			
-			vectorsNewTMP[index] = v;		
-			
-			for (int j = 0; j < vectors[0].length; j++) 
-				vectorsNewTMP[j][index] = v[j];
-			
+		for (int i = 0; i < right.size(); i++) {			
+			vectorsNewTMP[index] = vectors[right.get(i)];			
 			index++; 
 		}
 		
-		
-		
 		index = 0;
+		for (int i = 0; i < left.size(); i++) {			
+			for (int j = 0; j < vectorsNewTMP[0].length; j++) {
+				int t = left.get(i);
+				vectorsNew[j][index] = vectorsNewTMP[j][left.get(i)];
+			}			
+			index++;			
+		}
 		
+		for (int i = 0; i < right.size(); i++) {			
+			for (int j = 0; j < vectorsNewTMP[0].length; j++) {
+				vectorsNew[j][index] = vectorsNewTMP[j][right.get(i)];
+			}			
+			index++;			
+		}
+				
 		return vectorsNew;
 		
+	}
+	
+	public static boolean isThisTrueSingle(boolean A[]) {		
+		int count = 0;		
+		for (int i = 0; i < A.length; i++) {
+			if (A[i]) count++;
+			if (count > 1) return true;
+		}					
+		return false;		
 	}
 		
 }
