@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class Matrix {
 	
+	private static boolean vectors[][];
+	private static int indexes[];
+	
 	public static boolean[][] createBOOLEAN(int size) {		
 		boolean A[][] = new boolean[size][size];		
 		Random rnd = new Random(System.currentTimeMillis());		
@@ -35,22 +38,6 @@ public class Matrix {
 					else System.out.print("  " + 0 + " ");
 				if (j < A[0].length - 1) System.out.print(" ");	        				
 			}			
-			if (i < A.length - 1) System.out.print("\n");	        			
-		}		
-	}
-	
-	//--------------------------------------------------------------//
-	public static void printINT_VECTOR(int A[], char c) {
-			
-		System.out.print("        |  T*");
-		System.out.println();			
-		System.out.println("        |ЧЧЧЧЧ");
-
-		for (int i = 0; i < A.length; i++) {
-			
-			if (A[i] == -1) System.out.print("   " + c + "(" + i + ") |  -");
-			else System.out.print("   " + c + "(" + i + ") |  " + A[i] + " ");
-				
 			if (i < A.length - 1) System.out.print("\n");	        			
 		}		
 	}
@@ -143,9 +130,9 @@ public class Matrix {
 	}
 	
 	//--------------------------------------------------------------//
-	public static boolean[][] getBlockMatrix(boolean A[][], int index) {
+	public static boolean[][] getBlockMatrix(boolean A[][]) {
 
-		boolean vectors[][] = A;
+		vectors = A;
 		
 		// при сортировке строк буду записывать их индексы в две части,
 		// это при допущении, что исходна€ матрица симметрична относительно главной  
@@ -155,7 +142,7 @@ public class Matrix {
 		ArrayList<Integer> right = new ArrayList<>();
 		
 		ArrayList<Integer> checked = new ArrayList<>();		
-		int indexes[] = new int[A.length];
+		indexes = new int[A.length];
 		for (int i = 0; i < A.length; i++) indexes[i] = i; 
 		
 		for (int i = 0; i < A.length; i++) {
@@ -168,19 +155,19 @@ public class Matrix {
 				else right.add(j);
 			}
 
-			vectors = getNewVectors(left, right, vectors, indexes);
+			vectors = getNewVectors(left, right);
 	
 			left.clear();
 			right.clear();
 			
 		}
 		
-		printBOOLEAN_blockMatrix(vectors, indexes);
+		printBOOLEAN_blockMatrix();
 		return vectors;
 		
 	}
 	
-	private static boolean[][] getNewVectors(ArrayList<Integer> left, ArrayList<Integer> right, boolean vectors[][], int indexes[]) {
+	private static boolean[][] getNewVectors(ArrayList<Integer> left, ArrayList<Integer> right) {
 		
 		boolean vectorsNew[][] = new boolean[vectors.length][vectors[0].length];
 		boolean vectorsNewTMP[][] = new boolean[vectors.length][vectors[0].length];
@@ -203,7 +190,6 @@ public class Matrix {
 		index = 0;
 		for (int i = 0; i < left.size(); i++) {			
 			for (int j = 0; j < vectorsNewTMP[0].length; j++) {
-				int t = left.get(i);
 				vectorsNew[j][index] = vectorsNewTMP[j][left.get(i)];
 			}			
 			index++;			
@@ -215,6 +201,8 @@ public class Matrix {
 			}			
 			index++;			
 		}
+		
+		indexes = indexesNew;
 				
 		return vectorsNew;
 		
@@ -229,28 +217,28 @@ public class Matrix {
 		return false;		
 	}
 	
-	public static void printBOOLEAN_blockMatrix(boolean A[][], int indexes[]) {
+	public static void printBOOLEAN_blockMatrix() {
 		
 		System.out.print("        |");
-		for (int i = 0; i < A[0].length; i++) {
+		for (int i = 0; i < vectors[0].length; i++) {
 			System.out.print("x(" + indexes[i] + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("        |ЧЧЧЧ");
-		for (int i = 0; i < A[0].length - 1; i++) {
+		for (int i = 0; i < vectors[0].length - 1; i++) {
 			System.out.print("ЧЧЧЧЧ");
 		}
 		System.out.println();
 
-		for (int i = 0; i < A.length; i++) {
+		for (int i = 0; i < vectors.length; i++) {
 			System.out.print("   x(" + indexes[i] + ") |");
-			for (int j = 0; j < A[0].length; j++) {				
-				if (A[i][j] == true) System.out.print("  " + 1 + " ");
+			for (int j = 0; j < vectors[0].length; j++) {				
+				if (vectors[i][j] == true) System.out.print("  " + 1 + " ");
 					else System.out.print("  " + 0 + " ");
-				if (j < A[0].length - 1) System.out.print(" ");	        				
+				if (j < vectors[0].length - 1) System.out.print(" ");	        				
 			}			
-			if (i < A.length - 1) System.out.print("\n");	        			
+			if (i < vectors.length - 1) System.out.print("\n");	        			
 		}		
 	}
 	

@@ -56,22 +56,42 @@ public class MainClass {
 						
 						System.out.println();
 						System.out.println(">> ÌÀÒÐÈÖÀ A >\n");	
-						boolean A[][] = {{false, true,  false, false, false, false},
-								 		 {false, true,  false, false, true,  false},
-										 {false, false, true,  false, false, false},
-										 {false, false, false, false, false, false},
-										 {true,  false, false, true,  false, false},
-										 {false, false, false, false, true,  true}};
+//						boolean A[][] = {{false, true,  false, false, false, false},
+//								 		 {false, true,  false, false, true,  false},
+//										 {false, false, true,  false, false, false},
+//										 {false, false, false, false, false, false},
+//										 {true,  false, false, true,  false, false},
+//										 {false, false, false, false, true,  true}};
+						boolean A[][] = {{false, true,  false, false, false, false, false, false, false, false},
+								 		 {false, true,  false, false, true,  false, false, false, false, false},
+										 {false, false, true,  false, false, false, false, false, false, false},
+										 {false, false, false, false, false, false, false, false, false, false},
+										 {true,  false, false, true,  false, false, false, false, false, false},
+										 {false, false, false, false, true,  true,  false, false, false, false},
+										 {false, false, true,  false, false, false, false, false, false, false},
+										 {false, false, false, true,  false, false, false, false, false, false},
+										 {false, false, false, true,  true,  false, false, false, false, false},
+										 {false, false, false, true,  false, false, false, false, false, false}};
 						Matrix.printBOOLEAN(A, 'x', 'x'); 
 				        System.out.println("\n");
 				        
 				        System.out.println(">> ÌÀÒÐÈÖÀ B >\n");
-				        boolean B[][] = {{false, false, false, true,  false, false},
-								 		 {true,  true,  false, false, false, false},
-										 {false, false, true,  false, false, false},
-										 {false, false, false, true,  false, false},
-										 {false, false, false, true,  true,  false},
-										 {false, false, false, true,  false, false}};
+//				        boolean B[][] = {{false, false, false, true,  false, false},
+//								 		 {true,  true,  false, false, false, false},
+//										 {false, false, true,  false, false, false},
+//										 {false, false, false, true,  false, false},
+//										 {false, false, false, true,  true,  false},
+//										 {false, false, false, true,  false, false}};
+				        boolean B[][] = {{false, false, false, true,  false, false, false, false, false, false},
+								 		 {true,  true,  false, false, false, false, false, false, false, false},
+										 {false, false, true,  false, false, false, false, false, false, false},
+										 {false, false, false, true,  false, false, false, false, false, false},
+										 {false, false, false, true,  true,  false, false, false, false, false},
+										 {false, false, false, true,  false, false, false, false, false, false},
+										 {false, false, true,  false, false, false, false, false, false, false},
+										 {false, false, false, true,  false, false, false, false, false, false},
+										 {false, false, false, true,  true,  false, false, false, false, false},
+										 {false, false, false, true,  false, false, false, false, false, false}};
 						Matrix.printBOOLEAN(B, 'x', 'x'); 
 				        System.out.println("\n");
 				        
@@ -95,8 +115,8 @@ public class MainClass {
 				        Matrix.printBOOLEAN(C, 'x', 'x'); 
 				        System.out.println("\n");
 				        
-				        System.out.println(">> ÐÀÇÁÈÅÍÈÅ ÌÀÒÐÈ×ÍÛÉ ÌÅÒÎÄÎÌ ÍÀ×ÈÍÀß Ñ 7-ÎÉ ÂÅÐØÈÍÛ (õ(6); ÁËÎ×ÍÎ-ÄÈÀÃÎÍÀËÜÍÀß ÌÀÒÐÈÖÀ) >\n");
-				        boolean blockC[][] = Matrix.getBlockMatrix(C, 6);
+				        System.out.println(">> ÐÀÇÁÈÅÍÈÅ ÌÀÒÐÈ×ÍÛÌ ÌÅÒÎÄÎÌ (ÁËÎ×ÍÎ-ÄÈÀÃÎÍÀËÜÍÀß ÌÀÒÐÈÖÀ) >\n");
+				        boolean blockC[][] = Matrix.getBlockMatrix(C);
 				        System.out.println("\n");
 				        
 				        break;
