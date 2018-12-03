@@ -13,9 +13,9 @@ public class Parallel {
         commonResource = new CommonResourceTransitiveClosure(AB.length);
 		BARRIER = new CyclicBarrier(4, commonResource);
 		
-        for (int i = 1; i < 5; i++) {				             
+        for (int i = 0; i < 4; i++) {				             
             Thread t = new Thread(new TransitiveClosureThread(commonResource, i, AB, BARRIER));
-            t.setName("Thread "+ i);
+//            t.setName("Thread "+ i);
             t.start();
         }
         		

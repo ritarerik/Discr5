@@ -50,7 +50,7 @@ public class MainClass {
 						boolean B[][] = Matrix.createBOOLEAN(count);
 	
 						// ïîñëåäîâàòåëüíî
-						System.out.println(">> ÏÎÑËÅÄÎÂÀÒÅËÜÍÛÉ ÀËÃÎÐÈÒÌ >\n");
+						System.out.println("\n>> ÏÎÑËÅÄÎÂÀÒÅËÜÍÛÉ ÀËÃÎÐÈÒÌ >\n");
 						boolean AB[][] = Matrix.intersection(A, B);
 				        boolean R[][] = Matrix.getDirectTransitiveClosure(AB);
 				        boolean Q[][] = Matrix.transpose(R);
