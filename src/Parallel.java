@@ -76,7 +76,7 @@ class TransitiveClosureThread implements Runnable {
 			D[vertex] = true;
 					
 			ArrayDeque<Integer> Q = new ArrayDeque<>(); // очередь вершин
-			Q.addLast(vertex);							// первая вершина задаётся как параметр функции (по заданию 7-ая (x(6)))
+			Q.addLast(vertex);							// первая вершина задаётся как параметр функции 
 				
 			ArrayDeque<Integer> L = new ArrayDeque<>(); // очередь расстояний
 			L.addLast(B[vertex]);						// первое расстояние = 0
