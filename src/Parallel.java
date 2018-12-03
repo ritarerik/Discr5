@@ -13,10 +13,10 @@ public class Parallel {
         commonResource = new CommonResourceTransitiveClosure(AB.length);
 		BARRIER = new CyclicBarrier(4, commonResource);
 		
+		Thread t[] = new Thread[4];		
         for (int i = 0; i < 4; i++) {				             
-            Thread t = new Thread(new TransitiveClosureThread(commonResource, i, AB, BARRIER));
-//            t.setName("Thread "+ i);
-            t.start();
+            t[i] = new Thread(new TransitiveClosureThread(commonResource, i, AB, BARRIER));
+            t[i].start();
         }
         		
 	}
@@ -66,7 +66,10 @@ class TransitiveClosureThread implements Runnable {
     	long startTime = System.currentTimeMillis();
     	
     	while (vertex < G[0].length) {
-	    	int B[] = new int[G.length];
+	    	
+    		System.out.println("Thread #" + N + ": " + vertex);
+    		
+    		int B[] = new int[G.length];
 			for (int j = 0; j < B.length; j++) B[j] = -1;
 			B[vertex] = 1;
 			

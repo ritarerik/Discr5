@@ -50,7 +50,7 @@ public class MainClass {
 						boolean B[][] = Matrix.createBOOLEAN(count);
 	
 						// ïîñëåäîâàòåëüíî
-						System.out.println("\n>> ÏÎÑËÅÄÎÂÀÒÅËÜÍÛÉ ÀËÃÎÐÈÒÌ >\n");
+						System.out.println("\n> Ïîñëåäîâàòåëüíûé àëãîðèòì >\n");
 						boolean AB[][] = Matrix.intersection(A, B);
 				        boolean R[][] = Matrix.getDirectTransitiveClosure(AB);
 				        boolean Q[][] = Matrix.transpose(R);
@@ -58,7 +58,7 @@ public class MainClass {
 				        boolean blockC[][] = Matrix.getBlockMatrix(C, false);
 						
 				        // ïàðàëëåëüíî
-				        System.out.println(">> ÏÀÐÀËËÅËÜÍÛÉ ÀËÃÎÐÈÒÌ >\n");
+				        System.out.print("> Ïàðàëëåëüíûé àëãîðèòì >");
 						Parallel.run(A, B);							
 				        
 				        break;
