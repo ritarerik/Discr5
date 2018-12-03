@@ -67,8 +67,6 @@ class TransitiveClosureThread implements Runnable {
     	
     	while (vertex < G[0].length) {
 	    	
-    		System.out.println("Thread #" + N + ": " + vertex);
-    		
     		int B[] = new int[G.length];
 			for (int j = 0; j < B.length; j++) B[j] = -1;
 			B[vertex] = 1;
