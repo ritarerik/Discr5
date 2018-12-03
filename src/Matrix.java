@@ -62,6 +62,8 @@ public class Matrix {
 			
 		boolean C[][] = new boolean[G.length][G[0].length];
 		
+		long startTime = System.currentTimeMillis();
+		
 		for (int vertex = 0; vertex < G.length; vertex ++) {
 			
 			int B[] = new int[G[0].length];
@@ -98,6 +100,9 @@ public class Matrix {
 			
 		}
 		
+		long timeSpent = System.currentTimeMillis() - startTime;
+		System.out.println("  >> t = " + timeSpent + "мс\n");
+		
 		return C;
 			
 	}	
@@ -130,7 +135,7 @@ public class Matrix {
 	}
 	
 	//--------------------------------------------------------------//
-	public static boolean[][] getBlockMatrix(boolean A[][]) {
+	public static boolean[][] getBlockMatrix(boolean A[][], boolean print) {
 
 		vectors = A;
 		
@@ -162,7 +167,7 @@ public class Matrix {
 			
 		}
 		
-		printBOOLEAN_blockMatrix();
+		if (print) printBOOLEAN_blockMatrix();
 		return vectors;
 		
 	}

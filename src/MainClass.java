@@ -41,14 +41,26 @@ public class MainClass {
 							break;
 						}						
 						
-						// ïîñëåäîâàòåëüíûé àëãîðèòì
-						System.out.println("\n> Ïîñëåäîâàòåëüíûé àëãîðèòì >");
-						boolean A[][] = Matrix.createBOOLEAN(count);					
-//				        TransitiveClosure.printComponents(A);
+						boolean A[][] = Matrix.createBOOLEAN(count);
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						boolean B[][] = Matrix.createBOOLEAN(count);
+	
+						// ïîñëåäîâàòåëüíî
+						System.out.println(">> ÏÎÑËÅÄÎÂÀÒÅËÜÍÛÉ ÀËÃÎÐÈÒÌ >\n");
+						boolean AB[][] = Matrix.intersection(A, B);
+				        boolean R[][] = Matrix.getDirectTransitiveClosure(AB);
+				        boolean Q[][] = Matrix.transpose(R);
+				        boolean C[][] = Matrix.logicalMultiplication(R, Q);
+				        boolean blockC[][] = Matrix.getBlockMatrix(C, false);
+						
+				        // ïàðàëëåëüíî
+				        System.out.println(">> ÏÀÐÀËËÅËÜÍÛÉ ÀËÃÎÐÈÒÌ >\n");
+						Parallel.run(A, B);							
 				        
-				        // ïàðàëëåëüíûé àëãîðèòì
-				        System.out.print("> Ïàðàëëåëüíûé àëãîðèòì >");
-//						TransitiveClosure.printComponentsMULTITHREAD(A);
 				        break;
 					}
 									        					
@@ -116,7 +128,7 @@ public class MainClass {
 				        System.out.println("\n");
 				        
 				        System.out.println(">> ÐÀÇÁÈÅÍÈÅ ÌÀÒÐÈ×ÍÛÌ ÌÅÒÎÄÎÌ (ÁËÎ×ÍÎ-ÄÈÀÃÎÍÀËÜÍÀß ÌÀÒÐÈÖÀ) >\n");
-				        boolean blockC[][] = Matrix.getBlockMatrix(C);
+				        boolean blockC[][] = Matrix.getBlockMatrix(C, true);
 				        System.out.println("\n");
 				        
 				        break;
@@ -132,3 +144,5 @@ public class MainClass {
 	}
 	
 }
+
+
