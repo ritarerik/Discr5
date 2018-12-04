@@ -97,6 +97,13 @@ class TransitiveClosureThread implements Runnable {
 					} 								
 			}
 	    	
+//			String S = "";			
+//			for (int i = 0; i < D.length; i++) {
+//				if (D[i]) S += "1";
+//				else S += "0";
+//			}
+//			System.out.println("Thread #" + N + ": " + S);			
+			
 	        res.write(D, vertex);
 	    	vertex += 4;			
 		}
