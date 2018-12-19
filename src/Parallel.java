@@ -10,7 +10,7 @@ public class Parallel {
 	public static void run(boolean A[][], boolean B[][]) {
 		
 		boolean AB[][] = Matrix.intersection(A, B);
-        commonResource = new CommonResourceTransitiveClosure(AB.length);
+		commonResource = new CommonResourceTransitiveClosure(AB.length);
 		BARRIER = new CyclicBarrier(4, commonResource);
 		
 		Thread t[] = new Thread[4];		
@@ -18,7 +18,8 @@ public class Parallel {
             t[i] = new Thread(new TransitiveClosureThread(commonResource, i, AB, BARRIER));
             t[i].start();
         }
-        		
+       
+        
 	}
 	
 }
@@ -31,7 +32,7 @@ class CommonResourceTransitiveClosure implements Runnable {
 	}	
 	
     synchronized void write(boolean D[], int index) {
-    	C[index] = D;
+    	C[index] = D;     	
     }
     
     boolean[][] getC() {
@@ -42,7 +43,7 @@ class CommonResourceTransitiveClosure implements Runnable {
     public void run() {
     	boolean Q[][] = Matrix.transpose(C);
         boolean newC[][] = Matrix.logicalMultiplication(C, Q);
-        boolean blockC[][] = Matrix.getBlockMatrix(newC, false);        
+        boolean blockC[][] = Matrix.getBlockMatrix(newC, false);         
     }
 }
  
@@ -63,8 +64,7 @@ class TransitiveClosureThread implements Runnable {
     @Override
     public void run() {
     	
-    	long startTime = System.currentTimeMillis();
-    	
+    	long startTime = System.currentTimeMillis();    	    	
     	while (vertex < G[0].length) {
 	    	
     		int B[] = new int[G.length];
@@ -96,14 +96,7 @@ class TransitiveClosureThread implements Runnable {
 						}
 					} 								
 			}
-	    	
-//			String S = "";			
-//			for (int i = 0; i < D.length; i++) {
-//				if (D[i]) S += "1";
-//				else S += "0";
-//			}
-//			System.out.println("Thread #" + N + ": " + S);			
-			
+		
 	        res.write(D, vertex);
 	    	vertex += 4;			
 		}

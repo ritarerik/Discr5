@@ -52,11 +52,11 @@ public class MainClass {
 						// последовательно
 						System.out.println("\n> Последовательный алгоритм >\n");
 						boolean AB[][] = Matrix.intersection(A, B);
-				        boolean R[][] = Matrix.getDirectTransitiveClosure(AB);
-				        boolean Q[][] = Matrix.transpose(R);
+						boolean R[][] = Matrix.getDirectTransitiveClosure(AB);
+						boolean Q[][] = Matrix.transpose(R);
 				        boolean C[][] = Matrix.logicalMultiplication(R, Q);
 				        boolean blockC[][] = Matrix.getBlockMatrix(C, false);
-						
+				        
 				        // параллельно
 				        System.out.print("> Параллельный алгоритм >");
 						Parallel.run(A, B);							
